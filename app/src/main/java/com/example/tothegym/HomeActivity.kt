@@ -1,56 +1,67 @@
 package com.example.tothegym
 
 import android.os.Bundle
-import android.view.Menu
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
+import android.view.MenuItem
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import com.google.android.material.navigation.NavigationView
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
+import com.example.tothegym.fragments.GymlistFragment
+import com.example.tothegym.fragments.HomeFragment
+import com.example.tothegym.fragments.TrainersFragment
 
-class HomeActivity : AppCompatActivity() {
-
-    private lateinit var appBarConfiguration: AppBarConfiguration
-
+class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+    lateinit var drawerLayout: DrawerLayout;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setContentView(R.layout.activity_home);
+
+        var toolbar = findViewById<Toolbar>(R.id.toolbar)
+        var navView = findViewById<NavigationView>(R.id.nav_view)
+        drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout);
         setSupportActionBar(toolbar)
 
-        val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        val navView: NavigationView = findViewById(R.id.nav_view)
-        val navController = findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
-            ), drawerLayout
+        val toggle = ActionBarDrawerToggle(
+            this, drawerLayout, toolbar, 0, 0
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        var fragmentTransaction = supportFragmentManager.beginTransaction()
+        var homeFragment = HomeFragment()
+        fragmentTransaction.add(R.id.container, homeFragment);
+        fragmentTransaction.commit();
+
+        navView.setNavigationItemSelectedListener(this)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.home, menu)
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        var fragmentTransaction = supportFragmentManager.beginTransaction()
+        when (item.itemId) {
+            R.id.menu_home -> {
+                var homeFragment = HomeFragment()
+                fragmentTransaction.replace(R.id.container, homeFragment);
+            }
+            R.id.menu_profile -> {
+                Toast.makeText(this, "Update clicked", Toast.LENGTH_SHORT).show()
+            }
+            R.id.menu_routine -> {
+
+            }
+            R.id.menu_trainers -> {
+                var trainersFragment = TrainersFragment()
+                fragmentTransaction.replace(R.id.container, trainersFragment);
+            }
+            R.id.menu_gym -> {
+                var gymFragment = GymlistFragment()
+                fragmentTransaction.replace(R.id.container, gymFragment);
+            }
+        }
+        fragmentTransaction.commit();
+        drawerLayout.closeDrawer(GravityCompat.START)
         return true
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 }
