@@ -52,8 +52,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             }
             R.id.menu_trainers -> {
-                var trainersFragment = TrainersFragment()
-                fragmentTransaction.replace(R.id.container, trainersFragment);
+                var gymFragment = GymlistFragment()
+                fragmentTransaction.replace(R.id.container, gymFragment);
             }
             R.id.menu_gym -> {
                 var gymFragment = GymlistFragment()

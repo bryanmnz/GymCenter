@@ -70,13 +70,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
-                android:text="Ver Gimansio"
+                android:text="VER ITEM"
                 style="?attr/borderlessButtonStyle"
                 />
             <com.google.android.material.button.MaterialButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SEGUNDA ACCTION"
+                android:text="SEGUNDA ACCION"
                 style="?attr/borderlessButtonStyle"
                 />
         </LinearLayout>
