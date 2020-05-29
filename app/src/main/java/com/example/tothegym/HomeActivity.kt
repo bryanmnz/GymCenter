@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import com.example.tothegym.fragments.GymlistFragment
 import com.example.tothegym.fragments.HomeFragment
+import com.example.tothegym.fragments.TrainerlistFragment
 import com.example.tothegym.fragments.TrainersFragment
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -56,8 +57,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 fragmentTransaction.replace(R.id.container, gymFragment);
             }
             R.id.menu_gym -> {
-                var gymFragment = GymlistFragment()
-                fragmentTransaction.replace(R.id.container, gymFragment);
+                var trainersFragment = TrainerlistFragment()
+                fragmentTransaction.replace(R.id.container, trainersFragment);
             }
         }
         fragmentTransaction.commit();

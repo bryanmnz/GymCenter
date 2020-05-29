@@ -48,27 +48,16 @@
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="?android:attr/textColorSecondary"
                 />
-            <!--<TextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:id="@+id/rate"
-                android:text=""
+                android:id="@+id/description"
+                android:text="Descripcion"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="?android:attr/textColorSecondary"
-                />-->
-            <RatingBar
-                android:id="@+id/rate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                style="?android:attr/ratingBarStyleIndicator"
-                android:numStars="0"
-                android:stepSize="0.1"
-                android:isIndicator="true"
-                android:theme="@style/RatingBar"
-                android:backgroundTint="@color/colorPrimaryDark"
                 />
+
         </LinearLayout>
 
         <!-- Buttons -->

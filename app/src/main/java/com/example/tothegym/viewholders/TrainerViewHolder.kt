@@ -1,14 +1,15 @@
-package com.example.tothegym
+package com.example.tothegym.viewholders
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tothegym.dao.Gym
+import com.example.tothegym.dao.Trainer
 import kotlinx.android.synthetic.main.card_gym.view.*
 
-class GymViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+class TrainerViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     var title = itemView.title;
     var subTitle = itemView.subTitle;
-    fun bind(item: Gym){
+    fun bind(item: Trainer){
         title.text=item.title;
         subTitle.text = item.subTitle;
     }
