@@ -49,16 +49,16 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.menu_profile -> {
                 Toast.makeText(this, "Update clicked", Toast.LENGTH_SHORT).show()
             }
-            R.id.menu_routine -> {
+            /*R.id.menu_routine -> {
 
-            }
+            }*/
             R.id.menu_trainers -> {
-                var gymFragment = GymlistFragment()
-                fragmentTransaction.replace(R.id.container, gymFragment);
-            }
-            R.id.menu_gym -> {
                 var trainersFragment = TrainerlistFragment()
                 fragmentTransaction.replace(R.id.container, trainersFragment);
+            }
+            R.id.menu_gym -> {
+                var gymFragment = GymlistFragment()
+                fragmentTransaction.replace(R.id.container, gymFragment);
             }
         }
         fragmentTransaction.commit();

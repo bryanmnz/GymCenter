@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         var userName = et_user.text.toString();
         var pass = et_pass.text.toString();
 
-        if(userName.isNullOrEmpty() && pass.isNullOrEmpty()){
+        if(userName.isNullOrEmpty() || pass.isNullOrEmpty()){
             Toast.makeText(this, "El usuario y la contraseña son requeridos",
                 Toast.LENGTH_SHORT).show();
             return;

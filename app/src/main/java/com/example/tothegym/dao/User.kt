@@ -8,4 +8,5 @@ class User (
     var email:String,
     var password: String,
     var __v: Number){
+    var age:Number = 0;
 }

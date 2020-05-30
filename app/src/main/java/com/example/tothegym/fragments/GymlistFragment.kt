@@ -49,7 +49,6 @@ class GymlistFragment : Fragment() {
     fun loadContent(){
         doAsync {
             val call = RetrofitInstance().getInstance().create(APIService::class.java).listGym(0,10).execute()
-            var test = (1==1);
             uiThread {
                 if(call.isSuccessful){
                     var gymResponse = call.body();
